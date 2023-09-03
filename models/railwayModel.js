@@ -87,15 +87,19 @@ const railwaySchema = new mongoose.Schema(
     previousno: {
       type: String,
     },
+    prevClass: {
+      type: String,
+    },
     previousfrom: {
       type: String,
     },
     previousto: {
       type: String,
     },
-    previousticket: {
+    previousTicketNo: {
       type: String,
     },
+    degree: { type: String },
     createdAt: {
       type: Date,
       default: Date.now,

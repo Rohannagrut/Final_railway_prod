@@ -197,7 +197,7 @@ router.post("/sendpasswordlink", async (req, res) => {
     // console.log("userfind", userfind);
     console.log(userfind);
     const token = jwt.sign({ _id: userfind._id }, process.env.JWT_SECRET, {
-      expiresIn: "120s",
+      expiresIn: "900s",
       // expiresIn: "1d",
     });
     // console.log("token", token);
@@ -207,7 +207,7 @@ router.post("/sendpasswordlink", async (req, res) => {
       { new: true }
     );
     // console.log("setusertoken", setusertoken);
-    const resetPasswordLink = `https://railway-production-2.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`;
+    const resetPasswordLink = `https://railway-concession-prod.onrender.com/forgotpassword/${userfind.id}/${setusertoken.verifytoken}`;
 
     if (setusertoken) {
       const mailOptions = {
@@ -215,7 +215,7 @@ router.post("/sendpasswordlink", async (req, res) => {
         to: email,
         subject: "Vjti Railway Concession Password Reset",
         // text: `This Link Valid For 2 MINUTES http://localhost:3000/forgotpassword/${userfind.id}/${setusertoken.verifytoken} please reset your password`,
-        text: `This Link Valid For 2 MINUTES ${resetPasswordLink} please reset your password`,
+        text: `This Link Valid For 5 MINUTES ${resetPasswordLink} please reset your password`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
